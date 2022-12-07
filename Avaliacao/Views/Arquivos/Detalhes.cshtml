@@ -1,0 +1,13 @@
+﻿@model Avaliacao.Models.FileModel
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+<ul>
+    @foreach (var item in ViewBag.Lines)
+    {
+        <li> @item </li>
+    }
+</ul>
