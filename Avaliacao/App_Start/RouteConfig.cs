@@ -15,8 +15,8 @@ namespace Avaliacao
 
             routes.MapRoute(
                 name: "RealizarSoma",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Calculadora", action = "Somar", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{num1, num2}",
+                defaults: new { controller = "Calculadora", action = "Somar", num1 = UrlParameter.Optional, num2 = UrlParameter.Optional }
             );
 
             routes.MapRoute(
