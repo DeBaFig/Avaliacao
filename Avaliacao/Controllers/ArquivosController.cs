@@ -31,7 +31,23 @@ namespace Avaliacao.Controllers
         public ActionResult Detalhes(string fileName)
         {
             string path = Server.MapPath("~/UploadedFiles/") + fileName;
-            ViewBag.Lines = System.IO.File.ReadAllLines(path);
+            string[] Lines = System.IO.File.ReadAllLines(path);
+
+            //bubblesort
+            string temp;
+            for (int j = 0; j <= Lines.Length - 2; j++)
+            {
+                for (int i = 0; i <= Lines.Length - 2; i++)
+                {
+                    if (Lines[i].CompareTo(Lines[i + 1]) == 1)
+                    {
+                        temp = Lines[i + 1];
+                        Lines[ i + 1 ] = Lines[i];
+                        Lines[i] = temp;
+                    }
+                }
+            }
+            ViewBag.Lines = Lines;
             return View();
         }
     }
