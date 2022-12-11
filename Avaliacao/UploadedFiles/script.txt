@@ -1,0 +1,19 @@
+#/home/dbassi/0/backup-db/backup
+
+#!/bin/bash
+DATE=$(date +%d-%m-%Y)
+DB_USER="phpe2122g1"
+DB_PASSWORD="phpe2122g1@22@ago"
+DB="phpe2122g1"
+
+mkdir $DATE
+
+mysqldump --force --skip-lock-tables -u $DB_USER -h 3.89.36.150 $DB --password=$DB_PASSWORD >> $DATE/db_backup.sql
+
+find ./* -type d -mtime +30 -exec rm {} \;
+
+git add .
+git commit -m $DATE
+git push
+
+git config --global user.signingkey 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDc+HdwinnxqZ++tWD3Scby5JhRnt1Zpuk3LsRWeo6U/5frwy44BHPeXWK6i4H64iSOzh5jQczc5uh/tYDV9O+qmw/NJxr0AkNqcPLbjgNcy+8MyKul6Nbb1bKzznQdgbduDbS89zU0yNI/xcbkrLf0qHlXHlL+z22Yl+lj0195XpQDm9IocbTjIme1RHE10YxjwDkI9rYCQNZMBtkmYKTBVhGhHfT9KmI9Ea3c9N5+ECJ3Iy+LnWsGxgw7a6u0G90Km9I9e4LCmWy9bz/xdszxJcO0/DoUXGulp0BGGodvQbtK0GA6NPvKnMF3cvQAOYWkYPrZ4Sv/cQKTGtxvwvrgUlDhP4FNRrV5giZbHWdQpuQfZb3Zs7q8DQ0qvOwmPqe0T0PxNI0kev0QDUgylgyGMSAAY8F/PI4Qter0o1avLAqgVRKcQd47iMf3Ogsc0sB+QX9nCTOrxWRW0/ZWdC7zg+saFDxuL4ZWMu4l1auZ3Df2C8xPi7o5CExYzFAl4sM= denize.f.bassi@gmail.com'
